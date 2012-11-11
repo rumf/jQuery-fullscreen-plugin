@@ -1,7 +1,7 @@
 /**
 * @name jQuery Simple Fullscreen Plugin
 * @author Max Schukin
-* @version 1.0
+* @version 1.1
 * @url https://github.com/rumf/jQuery-fullscreen-plugin/
 * @license MIT License
 */
@@ -28,26 +28,26 @@
         }
     }
 
-    function FullScreen() {
-        return this.init();
+    function FullScreen(element) {
+        return this.init(element);
     }
 
     FullScreen.prototype = {
-        init: function() {
-            var docElement = document.documentElement;
+        init: function(element) {
+            this.element = element;
 
-            this.cancelFunc = document["cancelFullScreen"]
-                || document["webkitCancelFullScreen"]
-                || document["mozCancelFullScreen"];
+            this.cancelFunc = document.cancelFullScreen
+                || document.webkitCancelFullScreen
+                || document.mozCancelFullScreen;
 
             if (!this.cancelFunc) {
                 this.supported = false;
             } else {
                 this.supported = true;
 
-                this.fullscreenFunc = docElement["requestFullScreen"]
-                    || docElement["webkitRequestFullScreen"]
-                    || docElement["mozRequestFullScreen"];
+                this.fullscreenFunc = element.requestFullScreen
+                    || element.webkitRequestFullScreen
+                    || element.mozRequestFullScreen;
             }
 
             return this.supported;
@@ -60,7 +60,7 @@
         },
 
         setFullScreen: function() {
-            this.fullscreenFunc.call(document.documentElement);
+            this.fullscreenFunc.call(this.element);
         },
 
         cancelFullScreen: function() {
@@ -76,11 +76,19 @@
         }
     }
 
-    $.fullScreen = function(method) {
-        var plugin = $(document).data('plugin_fullScreen');
+    $.fullScreen = $.fn.fullScreen = function(method) {
+        var element;
+
+        if (typeof this !== 'object' || this == document) {
+            element = document.documentElement;
+        } else {
+            element = this[0];
+        }
+        var plugin = $(element).data('plugin_fullScreen');
 
         if (!plugin) {
-            plugin = new FullScreen();
+            plugin = new FullScreen(element);
+            $(element).data('plugin_fullScreen', plugin);
         }
 
         if (method && plugin.supported) {
