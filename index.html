@@ -49,6 +49,13 @@ if (!$.fullScreen('disable')) {
 if (!$.fullScreen('toggle')) {
   alert('Your browser does not support Full Screen API');
 }</pre></p>
+          <p>
+            <div class="link" id="toggle-fullscreen-div">Toggle fullscreen for a div</div>
+          <pre>
+if (!$('#toggle-fullscreen-div').fullScreen('toggle')) {
+  alert('Your browser does not support Full Screen API');
+}</pre></p>
+
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/rumf">Max Schukin</a></p>
@@ -88,6 +95,12 @@ if (!$.fullScreen('toggle')) {
             alert('Your browser does not support Full Screen API');
           }
           return false;
+        });
+
+        $('#toggle-fullscreen-div').on('click', function(){
+          if (!$(this).fullScreen('toggle')) {
+            alert('Your browser does not support Full Screen API');
+          }
         });
       });
     </script>
