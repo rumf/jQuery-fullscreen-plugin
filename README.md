@@ -11,7 +11,7 @@
 - `$.fullScreen("toggle")` - toggle fullscreen
 - `$.fullScreen("state")` - (string) 'fullscreen' / 'normal'
 
-##Example
+##Examples:
 
 ```javascript
 if (!$.fullScreen()) {
@@ -30,3 +30,6 @@ if ($.fullScreen("state") == 'fullscreen') {
     alert("You are in fullscreen mode");
 };
 ```
+
+##Demo:
+*[jQuery Simple Fullscreen demo](http://rumf.github.com/jQuery-fullscreen-plugin/)*
