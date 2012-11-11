@@ -5,6 +5,7 @@
 
 ##How to use:
 
+You can activate fullscreen mode for the whole page:
 - `$.fullScreen()` - check *[Full Screen API](https://developer.mozilla.org/en/DOM/Using_full-screen_mode)* support
 - `$.fullScreen("enable")` - enable fullscreen
 - `$.fullScreen("disable")` - disable fullscreen
