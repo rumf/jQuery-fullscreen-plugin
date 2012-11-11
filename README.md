@@ -1,7 +1,7 @@
 #jQuery Simple Fullscreen Plugin
 
 @author Max Schukin
-@version 1.0
+@version 1.1
 
 ##How to use:
 
@@ -10,6 +10,13 @@
 - `$.fullScreen("disable")` - disable fullscreen
 - `$.fullScreen("toggle")` - toggle fullscreen
 - `$.fullScreen("state")` - (string) 'fullscreen' / 'normal'
+
+Or you can use fullscreen for a single HTML element:
+- `$("#videoPlayer").fullScreen()`
+- `$("#videoPlayer").fullScreen("enable")`
+- `$("#videoPlayer").fullScreen("disable")`
+- `$("#videoPlayer").fullScreen("toggle")`
+- `$("#videoPlayer").fullScreen("state")`
 
 ##Examples:
 
@@ -28,6 +35,12 @@ if (!$.fullScreen("enable")) {
 ```javascript
 if ($.fullScreen("state") == 'fullscreen') {
     alert("You are in fullscreen mode");
+};
+```
+
+```javascript
+if (!$('#videoPlayer').fullScreen("enable")) {
+    alert("Your browser does not support Full Screen API");
 };
 ```
 
