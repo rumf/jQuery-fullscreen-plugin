@@ -22,7 +22,7 @@
       </header>
       <section>
           <p>
-            <a id="check-support">Check Full Screen API support</a>
+            <a id="check-support" href="#">Check Full Screen API support</a>
             <pre>
 if ($.fullScreen()) {
     alert('Your browser supports Full Screen API');
@@ -31,20 +31,20 @@ if ($.fullScreen()) {
 }</pre>
           </p>
           <p>
-            <a id="go-fullscreen">Enable fullscreen</a>
+            <a id="go-fullscreen" href="#">Enable fullscreen</a>
             <pre>
 if (!$.fullScreen('enable')) {
     alert('Your browser does not support Full Screen API');
 }</pre>
           </p>
           <p>
-            <a id="go-normal">Disable fullscreen</a>
+            <a id="go-normal" href="#">Disable fullscreen</a>
           <pre>
 if (!$.fullScreen('disable')) {
     alert('Your browser does not support Full Screen API');
 }</pre></p>
           <p>
-            <a id="toggle-fullscreen">Toggle fullscreen</a>
+            <a id="toggle-fullscreen" href="#">Toggle fullscreen</a>
           <pre>
 if (!$.fullScreen('toggle')) {
   alert('Your browser does not support Full Screen API');
@@ -66,24 +66,28 @@ if (!$.fullScreen('toggle')) {
           } else {
             alert('Your browser does not support Full Screen API');
           }
+          return false;
         });
 
         $('#go-fullscreen').on('click', function(){
           if (!$.fullScreen('enable')) {
             alert('Your browser does not support Full Screen API');
           }
+          return false;
         });
 
         $('#go-normal').on('click', function(){
           if (!$.fullScreen('disable')) {
             alert('Your browser does not support Full Screen API');
           }
+          return false;
         });
 
         $('#toggle-fullscreen').on('click', function(){
           if (!$.fullScreen('toggle')) {
             alert('Your browser does not support Full Screen API');
           }
+          return false;
         });
       });
     </script>
