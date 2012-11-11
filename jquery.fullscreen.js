@@ -1,3 +1,10 @@
+/**
+* @name jQuery Simple Fullscreen Plugin
+* @author Max Schukin
+* @version 1.0
+* @url https://github.com/rumf/jQuery-fullscreen-plugin/
+* @license MIT License
+*/
 ;(function($, document) {
     var methods = {
         enable: function() {
