@@ -1,18 +1,20 @@
 /**
 * @name jQuery Simple Fullscreen Plugin
 * @author Max Schukin
-* @version 1.1
+* @version 1.2
 * @url https://github.com/rumf/jQuery-fullscreen-plugin/
 * @license MIT License
 */
 ;(function($, document) {
+    'use strict';
+
     var methods = {
         enable: function() {
-            this.setFullScreen();
+            this.fullscreenFunc.call(this.element);
             return true;
         },
         disable: function() {
-            this.cancelFullScreen();
+            this.cancelFunc.call(document);
             return true;
         },
         toggle: function() {
@@ -26,7 +28,7 @@
                 return 'normal';
             }
         }
-    }
+    };
 
     function FullScreen(element) {
         return this.init(element);
@@ -59,36 +61,22 @@
                 || document.mozFullScreen;
         },
 
-        setFullScreen: function() {
-            this.fullscreenFunc.call(this.element);
-        },
-
-        cancelFullScreen: function() {
-            this.cancelFunc.call(document);
-        },
-
         toggleFullScreen: function() {
             if (this.getState()) {
-                this.cancelFullScreen();
+                this.cancelFunc.call(document);
             } else {
-                this.setFullScreen();
+                this.fullscreenFunc.call(this.element);
             }
         }
-    }
+    };
 
     $.fullScreen = $.fn.fullScreen = function(method) {
-        var element;
-
-        if (typeof this !== 'object' || this == document) {
-            element = document.documentElement;
-        } else {
-            element = this[0];
-        }
-        var plugin = $(element).data('plugin_fullScreen');
+        var element = (typeof this !== 'object' || this == document) ? document.documentElement : this[0],
+            plugin = $(element).data('pl_fullscreen');
 
         if (!plugin) {
             plugin = new FullScreen(element);
-            $(element).data('plugin_fullScreen', plugin);
+            $(element).data('pl_fullscreen', plugin);
         }
 
         if (method && plugin.supported) {
@@ -98,6 +86,6 @@
         } else {
             return plugin.supported;
         }
-    }
+    };
 
 })(jQuery, document);
