@@ -1,7 +1,7 @@
 #jQuery Simple Fullscreen Plugin
 
 @author Max Schukin
-@version 1.1
+@version 1.2
 
 ##How to use:
 
